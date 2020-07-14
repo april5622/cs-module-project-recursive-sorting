@@ -3,58 +3,38 @@ def merge(arrA, arrB):
     elements = len(arrA) + len(arrB) 
     merged_arr = [0] * elements
 
+    i = 0 # smallest value in index of the left
+    j = 0 # smallest value in index of the right
+
     # starting at the beginning of `a` and `b`
-    left = [0] * len(arrA)
-    right = [0] * len(arrB)
-    middle = len(merged_arr) // 2
-
-    for i in range(0, arrA):
-        left[i] = merged_arr[1 + i]
-
-    for j in range(0, arrB):
-        right[j] = merged_arr[middle + 1 + j]
-
-    i = j = k = 0
+    while i < len(arrA) and j < len(arrB):
     # compare the next value of each
-
-    while i < len(left) and j < len(right):
-        if left[i] < right[j]:
-            merged_arr[k] = left[i]
+        if arrA[i] < arrB[j]:
+            merged_arr.append(arrA[i])
             i += 1
-        else:
-            merged_arr[k] = right[j]
+        else: 
+            merged_arr.append(arrB[j])
             j += 1
-        k += 1
-
     # add smallest to `merged_arr`
-    
-    while i < len(left):
-        merged_arr[k] = left[i]
-        i += 1
-        k += 1
-    while j < len(right):
-        merged_arr[k] = right[j]
-        j += 1
-        k += 1
-
+    merged_arr += arrA[i:]
+    merged_arr += arrB[j:]
     
 
     return merged_arr
 
 # TO-DO: implement the Merge Sort function below recursively
 def merge_sort(arr):
-    if len(arr) > 1:
-        middle = len(arr) // 2
-        left = arr[:middle]
-        right = arr[middle:]
-        # recursively call merge_sort() on LHS
-        merge_sort(left)
-        # recursively call merge_sort() on RHS
-        merge_sort(right)
-        # merge sorted pieces
-        merge(left, right)
+    if len(arr) <= 1:
+        return arr
+    middle = len(arr) // 2
+    # recursively call merge_sort() on LHS
+    left = merge_sort(arr[:middle])
+    # recursively call merge_sort() on RHS
+    right = merge_sort(arr[middle:])
+    # merge sorted pieces
+    return merge(left, right)
 
-    return arr
+    
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
 # utilize any extra memory
@@ -69,3 +49,7 @@ def merge_sort_in_place(arr, l, r):
     # Your code here
     pass
 
+
+
+
+    
