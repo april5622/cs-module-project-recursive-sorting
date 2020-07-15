@@ -3,22 +3,30 @@ def merge(arrA, arrB):
     elements = len(arrA) + len(arrB) 
     merged_arr = [0] * elements
 
-    i = 0 # smallest value in index of the left
-    j = 0 # smallest value in index of the right
+    i = 0 # value in index of the left
+    j = 0 # value in index of the right
+    k = 0 # value in index of the merged_arr
 
     # starting at the beginning of `a` and `b`
     while i < len(arrA) and j < len(arrB):
     # compare the next value of each
-        if arrA[i] < arrB[j]:
-            merged_arr.append(arrA[i])
+        if arrA[i] < arrB[j]:     
+            merged_arr[k] = arrA[i] 
             i += 1
-        else: 
-            merged_arr.append(arrB[j])
+            
+        else:       
+            merged_arr[k] = arrB[j]       
             j += 1
+        k += 1
     # add smallest to `merged_arr`
-    merged_arr += arrA[i:]
-    merged_arr += arrB[j:]
-    
+    while i < len(arrA):
+        merged_arr[k] = arrA[i]
+        i += 1
+        k += 1
+    while j < len(arrB):
+        merged_arr[k] = arrB[j]
+        j += 1
+        k += 1
 
     return merged_arr
 
