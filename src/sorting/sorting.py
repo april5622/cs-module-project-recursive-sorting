@@ -3,46 +3,11 @@ def merge(arrA, arrB):
     elements = len(arrA) + len(arrB) 
     merged_arr = [0] * elements
 
-    i = 0 # value in index of the left
-    j = 0 # value in index of the right
-    k = 0 # value in index of the merged_arr
-
-    # starting at the beginning of `a` and `b`
-    while i < len(arrA) and j < len(arrB):
-    # compare the next value of each
-        if arrA[i] < arrB[j]:     
-            merged_arr[k] = arrA[i] 
-            i += 1
-            
-        else:       
-            merged_arr[k] = arrB[j]       
-            j += 1
-        k += 1
-    # add smallest to `merged_arr`
-    while i < len(arrA):
-        merged_arr[k] = arrA[i]
-        i += 1
-        k += 1
-    while j < len(arrB):
-        merged_arr[k] = arrB[j]
-        j += 1
-        k += 1
-
-    return merged_arr
+    # Your code here..
 
 # TO-DO: implement the Merge Sort function below recursively
 def merge_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    middle = len(arr) // 2
-    # recursively call merge_sort() on LHS
-    left = merge_sort(arr[:middle])
-    # recursively call merge_sort() on RHS
-    right = merge_sort(arr[middle:])
-    # merge sorted pieces
-    return merge(left, right)
 
-    
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
 # utilize any extra memory
@@ -56,8 +21,5 @@ def merge_in_place(arr, start, mid, end):
 def merge_sort_in_place(arr, l, r):
     # Your code here
     pass
-
-
-
 
     
