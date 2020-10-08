@@ -22,8 +22,6 @@ def binary_search(arr, target, start, end):
         return -1  # not found
 
 
-
-
 # STRETCH: implement an order-agnostic binary search
 # This version of binary search should correctly find 
 # the target regardless of whether the input array is
